@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    <title>Editar Proyecto</title>
+</head>
+<body class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-warning text-dark"><h3>Editar Registro #{{ tarea['id'] }}</h3></div>
+        <div class="card-body">
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Nombre del Proyecto</label>
+                    <input type="text" name="nombre" class="form-control" value="{{ tarea['nombre'] }}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Descripción Técnica</label>
+                    <textarea name="descripcion" class="form-control" rows="3" required>{{ tarea['descripcion'] }}</textarea>
+                </div>
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                    <a href="/" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

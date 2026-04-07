@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    <title>CRUD Ingenieria Pro</title>
+</head>
+<body class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>🛠️ Gestión de Proyectos</h2>
+        <!-- BUSCADOR -->
+        <form action="/" method="GET" class="d-flex w-50">
+            <input type="text" name="search" class="form-control me-2" placeholder="Buscar por nombre o descripción...">
+            <button type="submit" class="btn btn-outline-secondary">Buscar</button>
+        </form>
+    </div>
+    
+    <form action="/add" method="POST" class="row g-3 mb-5 shadow-sm p-3 bg-light rounded">
+        <div class="col-md-4"><input type="text" name="nombre" class="form-control" placeholder="Nombre" required></div>
+        <div class="col-md-6"><input type="text" name="descripcion" class="form-control" placeholder="Descripción técnica" required></div>
+        <div class="col-md-2"><button type="submit" class="btn btn-primary w-100">Registrar</button></div>
+    </form>
+
+    <table class="table table-hover border">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th><th>Proyecto</th><th>Descripción</th><th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in tareas %}
+            <tr>
+                <td>{{ t['id'] }}</td>
+                <td><strong>{{ t['nombre'] }}</strong></td>
+                <td>{{ t['descripcion'] }}</td>
+                <td>
+                    <a href="/edit/{{ t['id'] }}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="/delete/{{ t['id'] }}" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar?')">Borrar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
